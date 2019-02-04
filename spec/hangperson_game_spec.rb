@@ -63,11 +63,11 @@ describe HangpersonGame do
         @game.guess('q')
         expect(@game.wrong_guesses).to eq('q')
       end
-<<<<<<< HEAD
+
       it 'returns false'do
-=======
+
       it 'returns false' do
->>>>>>> 81d0a7c47590541d0f45033c1daef22d8d5d8374
+
         expect(@game.guess('a')).to be false
         expect(@game.guess('q')).to be false
       end
@@ -85,17 +85,17 @@ describe HangpersonGame do
       it 'throws an error when empty' do
         expect { @game.guess('') }.to raise_error(ArgumentError)
       end
-<<<<<<< HEAD
+
       it 'throws an error when not a letter'do
         expect { @game.guess('%') }.to raise_error(ArgumentError)
       end
       it 'throws an error when nil'do
-=======
+
       it 'throws an error when not a letter' do
         expect { @game.guess('%') }.to raise_error(ArgumentError)
       end
       it 'throws an error when nil' do
->>>>>>> 81d0a7c47590541d0f45033c1daef22d8d5d8374
+
         expect { @game.guess(nil) }.to raise_error(ArgumentError)
       end
     end
