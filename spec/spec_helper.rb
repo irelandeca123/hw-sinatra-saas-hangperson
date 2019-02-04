@@ -39,4 +39,5 @@ RSpec.configure do |config|
   end
   config.color = true
   config.filter_run_excluding pending: true # this avoids excessive pending examples output
+  
 end
