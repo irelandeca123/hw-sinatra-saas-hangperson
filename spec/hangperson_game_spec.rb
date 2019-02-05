@@ -2,7 +2,7 @@ require 'spec_helper'
 require 'hangperson_game'
 
 describe HangpersonGame do
-  # helper function: make several guesses
+ # helper function: make several guesses
   def guess_several_letters(game, letters)
     letters.chars do |letter|
       game.guess(letter)
@@ -27,7 +27,7 @@ describe HangpersonGame do
       end
       it 'changes correct guess list' do
         expect(@game.guesses).to eq('a')
-        expect(@game.wrong_guesses).to eq('Invalid guess.')
+        expect(@game.wrong_guesses).to eq('')
       end
       it 'returns true' do
         expect(@valid).not_to be false
@@ -119,19 +119,6 @@ describe HangpersonGame do
     it 'should continue play if neither win nor lose' do
       guess_several_letters(@game, 'do')
       expect(@game.check_win_or_lose).to eq(:play)
-    end
-  end
-
-  describe "guessing" do
-    it "should not log the same correct guess twice" do
-      post '/guess', {:guess => 'o'}, "rack.session" => {:word => 'foobar', :guesses => 'of', :wrong_guesses => 'xyz'}
-      session[:guesses].should == 'of'
-      session[:wrong_guesses].should == 'xyz'
-    end
-    it "should not log the same incorrect guess twice" do
-      post '/guess', {:guess => 'y'}, "rack.session" => {:word => 'foobar', :guesses => 'of', :wrong_guesses => 'xyz'}
-      session[:guesses].should == 'of'
-      session[:wrong_guesses].should == 'xyz'
     end
   end
 end
