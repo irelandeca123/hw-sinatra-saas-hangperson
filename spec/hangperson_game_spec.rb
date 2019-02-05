@@ -121,6 +121,19 @@ describe HangpersonGame do
       expect(@game.check_win_or_lose).to eq(:play)
     end
   end
+
+  describe "guessing" do
+    it "should not log the same correct guess twice" do
+      post '/guess', {:guess => 'o'}, "rack.session" => {:word => 'foobar', :guesses => 'of', :wrong_guesses => 'xyz'}
+      session[:guesses].should == 'of'
+      session[:wrong_guesses].should == 'xyz'
+    end
+    it "should not log the same incorrect guess twice" do
+      post '/guess', {:guess => 'y'}, "rack.session" => {:word => 'foobar', :guesses => 'of', :wrong_guesses => 'xyz'}
+      session[:guesses].should == 'of'
+      session[:wrong_guesses].should == 'xyz'
+    end
+  end
 end
 
 
