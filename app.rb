@@ -44,9 +44,9 @@ enable :sessions
         flash[:message] = "You have already used that letter."
       end
       if @game.check_win_or_lose == :win
-        redirect '/show'
+        redirect '/win'
       elsif @game.check_win_or_lose == :lose
-        redirect '/show'
+        redirect '/lose'
       else 
         redirect '/show'
       end
