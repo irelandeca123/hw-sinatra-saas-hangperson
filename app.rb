@@ -36,7 +36,7 @@ enable :sessions
   # If a guess is repeated, set flash[:message] to "You have already used that letter."
   # If a guess is invalid, set flash[:message] to "Invalid guess."
   post '/guess' do
-    letter = params[:guess].to_s[0] || ''
+    letter = params[:guess].to_s[0] || 'Invalid guess.'
     
     # handle argument errors too
     begin
@@ -51,8 +51,7 @@ enable :sessions
         redirect '/show'
       end
     rescue ArgumentError
-      flash[:message] = "Invalid guess.
-      "
+      flash[:message] = "Invalid guess."
       redirect '/show'
     end
     
