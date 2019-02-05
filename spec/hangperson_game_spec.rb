@@ -27,7 +27,7 @@ describe HangpersonGame do
       end
       it 'changes correct guess list' do
         expect(@game.guesses).to eq('a')
-        expect(@game.wrong_guesses).to eq('')
+        expect(@game.wrong_guesses).to eq('Invalid guess.')
       end
       it 'returns true' do
         expect(@valid).not_to be false

@@ -41,7 +41,7 @@ enable :sessions
     # handle argument errors too
     begin
       if !@game.guess(letter)
-        flash[:message] = "You have already used that letter"
+        flash[:message] = "You have already used that letter."
       end
       if @game.check_win_or_lose == :win
         redirect '/win'
@@ -51,7 +51,8 @@ enable :sessions
         redirect '/show'
       end
     rescue ArgumentError
-      flash[:message] = "Your input was invalid"
+      flash[:message] = "Invalid guess.
+      "
       redirect '/show'
     end
     
